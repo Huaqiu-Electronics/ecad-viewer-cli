@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node src/index.ts",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "build" :"tsc"
   },
   "dependencies": {
     "express": "^4.19.2"
