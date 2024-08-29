@@ -8,6 +8,20 @@
 
 ARG NODE_VERSION=20.10.0
 
+FROM node:${NODE_VERSION}-alpine as builder
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json ./
+
+RUN npm ci
+
+COPY . .
+
+RUN npm run build
+
 FROM node:${NODE_VERSION}-alpine
 
 # Use production node environment by default.
@@ -28,12 +42,10 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 USER node
 
 # Copy the rest of the source files into the image.
-COPY . /usr/src/app
-
-RUN npm install && npm run tsc
+COPY --from=builder /usr/src/app/dist ./dist
 
 # Expose the port that the application listens on.
 EXPOSE 7123
 
 # Run the application.
-CMD node dist/index.js
+CMD ["node", "dist/index.js"]
