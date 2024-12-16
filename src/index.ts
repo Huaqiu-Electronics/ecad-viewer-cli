@@ -3,10 +3,9 @@ import { find_root_sch_from_content, is_sch } from "./ecad-viewer";
 
 const app = express();
 
-const limit = '500mb';
 
-app.use(express.json({limit: limit}));
-app.use(express.urlencoded({limit: limit, extended: true}));
+app.use(express.json({limit:  '300mb'}));
+app.use(express.urlencoded({limit: '300mb', extended: true}));
 
 app.post(`/find_root_sch_from_file_map`, async (req, res) => {
     try {

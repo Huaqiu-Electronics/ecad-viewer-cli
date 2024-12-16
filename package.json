@@ -5,15 +5,15 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "tsc": "tsc",
-    "build" :"tsc"
+    "build": "tsc"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.21.2"
   },
   "devDependencies": {
-    "@types/express": "4.17.21",
-    "@types/node": "20.16.2",
-    "ts-node": "10.9.2",
-    "typescript": "5.5.4"
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }
